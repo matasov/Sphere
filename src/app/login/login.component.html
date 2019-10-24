@@ -1,0 +1,27 @@
+<app-secondary-header></app-secondary-header>
+<section id="registration">
+	<div class="container">
+		<form [formGroup]="loginForm" class="reg-form" (ngSubmit)="onLoginClick(captchaRef)">
+			<h3 class="section-title text-center">Вход в кабинет</h3>
+			<p class="lead text-center mb-3">Для работы в личном кабинете необходимо пройти авторизацию или <a
+					href="/registration">зарегистрироваться</a></p>
+			<div class="form-group">
+				<input formControlName="login" placeholder="Логин" type="text" autocomplete="off" class="form-control"
+					required />
+				<div id="loginwordstatus" class="empty-form">Обязательное поле</div>
+			</div>
+			<div class="form-group">
+				<input formControlName="password" type="password" class="form-control" placeholder="Пароль" value=""
+					autocomplete="off" required>
+				<div id="passwordstatus" class="empty-form">Обязательное поле</div>
+			</div>
+			<re-captcha #captchaRef="reCaptcha" (resolved)="resolved($event)" size="invisible"></re-captcha>
+			<button class="btn btn-primary">ВОЙТИ</button>
+			<a href="/recovery" class="btn btn-link">Восстановить пароль</a>
+		</form>
+	</div>
+</section>
+<app-footer></app-footer>
+<script>
+
+</script>

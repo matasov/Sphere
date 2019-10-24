@@ -1,0 +1,72 @@
+<app-dash-header></app-dash-header>
+<div class="d-flex align-items-stretch">
+    <app-dash-sidebar></app-dash-sidebar>
+    <div class="content p-4">
+
+        <div class="card mb-2">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Логин</th>
+                                <th scope="col">Спонсор</th>
+                                <th scope="col">Стол</th>
+                                <th scope="col">Создано</th>
+                                <th scope="col">Мест занято</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let ref of referrals" data-toggle="modal" (click)="showRefModal(ref)">
+                                <td>{{ref[5]}}</td>
+                                <td>{{ref[6]}}</td>
+                                <td>{{ref[4]}}</td>
+                                <td>{{ref[2]}}</td>
+                                <td>{{ref[14]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="referralsModalDetale" tabindex="-1" role="dialog" aria-labelledby="referralsModalDetale"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Стол №{{ level }} партнера: <b>{{ title }}</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Номер позиции</th>
+                            <th scope="col">Логин</th>
+                            <th scope="col">Тип</th>
+                            <th scope="col">Дата</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let line of currentRefTable; let i = index;">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ line['login'] }}</td>
+                            <td>{{ line['tech'] }}</td>
+                            <td>{{ line['date'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

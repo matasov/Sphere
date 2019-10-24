@@ -1,0 +1,77 @@
+<app-dash-header></app-dash-header>
+<div class="d-flex align-items-stretch">
+	<app-dash-sidebar></app-dash-sidebar>
+	<div class="content p-4">
+
+		<div class="d-flex justify-content-center">
+			<div class="card w-50 mb-4">
+				<div class="card-header">
+					<h3 class="page-title">Баланс к выводу</h3>
+				</div>
+				<div class="card-body">
+					<h2 class="text-center">Баланс: <b>${{balance}}</b></h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="page-title">Вывод на Perfect Money</h3>
+					</div>
+					<div class="card-body">
+						<form [formGroup]="perfectForm" (ngSubmit)="onSavePerfect()" autocomplete="off"
+							class="">
+							<div class="form-group">
+								<label>Финансовый пароль</label>
+								<input type="password" class="form-control" formControlName="finPass"
+									placeholder="Финансовый пароль" autocomplete="off" value="">
+							</div>
+							<div class="form-group">
+								<label>Сумма</label>
+								<input type="text" formControlName="perfectAmount" class="form-control" placeholder="Сумма"
+									autocomplete="off" value="">
+							</div>
+							<div class="form-group">
+								<label>Номер кошелька</label>
+								<input type="text" formControlName="perfectWallet" class="form-control"
+									placeholder="Номер кошелька" autocomplete="off" value="" disabled>
+							</div>
+							<div class="form-group"><button class="btn btn-submit">Вывести</button></div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="page-title">Вывод на Payeer</h3>
+					</div>
+					<div class="card-body">
+						<form [formGroup]="payeerForm" (ngSubmit)="onSavePayeer()" autocomplete="off"
+							class="">
+							<div class="form-group">
+								<label>Финансовый пароль</label>
+								<input type="password" class="form-control" formControlName="finPass"
+									placeholder="Финансовый пароль" autocomplete="off" value="">
+							</div>
+							<div class="form-group">
+								<label>Сумма</label>
+								<input type="text" formControlName="payeerAmount" class="form-control" placeholder="Сумма"
+									autocomplete="off" value="">
+							</div>
+							<div class="form-group">
+								<label>Номер кошелька</label>
+								<input type="text" formControlName="payeerWallet" class="form-control"
+									placeholder="Номер кошелька" autocomplete="off" value="" disabled>
+							</div>
+							<div class="form-group"><input type="submit" class="btn btn-submit"
+									name="perfect_withdrawal" id="perfect_withdrawal" value="Вывести"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

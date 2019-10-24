@@ -1,0 +1,22 @@
+<div class="sidebar sidebar-dark">
+	<ul class="list-unstyled">
+		<li>
+			<h4 class="username">Добро пожаловать,<br>{{userName}}</h4> 
+			<hr>
+			<div class="balances sidebar-balances d-none">
+				<p class="balance">Баланс: <strong>$15.25</strong></p>
+			</div>
+		</li>
+		<li><a href="/account">Мой профиль</a></li>
+		<li><a href="/business">Бизнес</a>
+		</li>
+		<li><a href="/payment">Пополнение баланса</a></li>
+		<li><a href="/transfers">Внутренние переводы</a></li>
+		<li><a href="/withdrawal">Вывод средств</a></li>
+		<li><a href="/referrals">Мои рефералы</a></li>
+		<li><a href="/history">История</a></li>
+		<li>
+			<button class="btn btn-logout" (click)="onLogOut()">Выйти</button>
+		</li>
+	</ul>
+</div>

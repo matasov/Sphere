@@ -1,0 +1,29 @@
+@import './../../../assets/media/css/bootadmin.css';
+
+table {margin: 1rem;}
+.table thead th,
+.table tbody td {
+	padding: .2rem;
+	font-size: 0.8rem;
+	vertical-align: middle;
+}
+
+.admin-users-table span,
+.admin-users-table th,
+.admin-users-table,
+.admin-users-table input {
+    font-family: "Roboto", sans-serif;
+}
+
+.admin-users-table tr td input {
+	font-size: 0.8rem;
+	height: auto !important;
+	padding: 1px 2px;
+}
+
+.admin-users-table tr td span {
+    white-space: nowrap;
+	padding: 1px 2px;
+	border: 1px solid #fff;
+	display: block;
+}

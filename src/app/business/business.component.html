@@ -1,0 +1,57 @@
+<app-dash-header></app-dash-header>
+<div class="d-flex align-items-stretch">
+	<app-dash-sidebar></app-dash-sidebar>
+	<div class="content p-4">
+
+		<div class="d-lg-flex">
+			<div class="mainMaxtix">
+				<h4>Столы:</h4>
+				<div class="d-flex justify-content-center flex-fill ghost-line">
+					<button class="business-lvl-btn"><img src="./../../assets/media/images/bussiness/home.svg" alt=""
+							(click)="setLevel('0')"></button>
+					<button class="business-lvl-btn"><img src="./../../assets/media/images/bussiness/limo1.svg" alt=""
+							(click)="setLevel(1)"></button>
+					<button class="business-lvl-btn"><img src="./../../assets/media/images/bussiness/bus1.svg" alt=""
+							(click)="setLevel(2)"></button>
+					<button class="business-lvl-btn"><img src="./../../assets/media/images/bussiness/train1.svg" alt=""
+							(click)="setLevel(3)"></button>
+					<button class="business-lvl-btn"><img src="./../../assets/media/images/bussiness/ship1.svg" alt=""
+							(click)="setLevel(4)"></button>
+					<button class="business-lvl-btn"><img src="./../../assets/media/images/bussiness/plain1.svg" alt=""
+							(click)="setLevel(5)"></button>
+				</div>
+
+				<div class="currentLevel"><button type="button" class="btn btn-submit" (click)="sendBuyRequest()">Купить
+						место</button></div>
+
+				<div [className]="getClassByLevel(currentLevel)">
+					<div *ngFor="let level of showArray; let i = index"
+						[className]="level['tech']!=null? 'business-tooltip bold' : 'business-tooltip'">{{ i + 1}}.
+						{{!level['login'] ?'Айда к нам!': level['login'] }}
+						{{(!level['tech']?'':level['tech']!=='REAL'?level['tech']:'')|slice : 0:3}}</div>
+					<img [src]="getImageByLevel(currentLevel)" alt="" class="img-fluid">
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+	<div class="modal fade" id="modalpayment" tabindex="-1" role="dialog" aria-labelledby="modalSuccessPayment"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenterTitle">Поздравляем!</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Покупка места произведена успешно. Обновите страницу через 5 с.</p>
+					<button type="button" class="btn btn-submit" (click)="reloadPage()">Обновить</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

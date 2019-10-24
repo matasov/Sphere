@@ -1,0 +1,154 @@
+<app-dash-header></app-dash-header>
+<div class="d-flex align-items-stretch">
+    <app-dash-sidebar></app-dash-sidebar>
+
+    <div class="content p-4">
+
+        <div class="d-flex justify-content-between align-items-top">
+            <div class="card flex-fill mb-5 mr-4">
+                <div class="card-header">
+                    <h3 class="page-title">Пополнение Perfect Money</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="perfectDialogForm" (ngSubmit)="openPerfectModal()"
+                        class="d-flex justify-content-left align-items-end line-form">
+                        <div class="form-group">
+                            <label>Укажите сумму</label>
+                            <input type="text" class="form-control" formControlName="PAYMENT_AMOUNT" min="1">
+                        </div>
+                        <button class="btn btn-submit">Пополнить</button>
+                        <!-- <div class="form-group"><input type="submit" class="btn btn-submit" name="PAYMENT_METHOD" value="Пополнить"></div> -->
+
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="card flex-fill mb-5">
+                <div class="card-header">
+                    <h3 class="page-title">Пополнение Payeer</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="payeerDialogForm" class="d-flex justify-content-left align-items-end line-form"
+                        (ngSubmit)="openPayeerModal()">
+                        <div class="form-group">
+                            <label>Укажите сумму</label>
+                            <input type="text" class="form-control" formControlName="PAYMENT_AMOUNT" min="1" value="1">
+                        </div>
+                        <button class="btn btn-submit">Пополнить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-top">
+            <div class="card flex-fill mr-4 mb-5">
+                <div class="card-header">
+                    <h3 class="page-title">Пополнение Perfect Money</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <h5>Партнерам из Казахстана для пополнения баланса можно использовать этот обменный сервис.
+                            </h5>
+                            <h5>Вы можете обменять свои средства только на Perfect Money!</h5>
+                            <h5>При заполнении формы обмена в поле кошелька Perfect Money вставлять этот номер -
+                                U4138723</h5>
+                            <h5>После обмена заполните форму справа и укажите сумму. Вам будет начислена денежная сумма на
+                                баланс.</h5>
+                            <a href="https://1wm.kz/" target="_blanck" class="btn btn-submit">Перейти</a>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <form [formGroup]="confirmForm"
+                                class=""
+                                (ngSubmit)="sendConfirm()">
+                                <div class="form-group">
+                                    <label>Skype</label>
+                                    <input type="text" class="form-control" formControlName="skype" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>WhatsApp</label>
+                                    <input type="text" class="form-control" formControlName="whatsapp" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Текст письма</label>
+                                    <textarea class="form-control" formControlName="textValue"></textarea>
+                                </div>
+                                <button class="btn btn-submit mb-4">Отправить</button>
+                            </form>
+                            <h4>Для Казахстана по запросу вывод средств осуществляется на любые доступные платежные
+                                системы.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':perfectDisplay}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Подтверждение операции</h5>
+                <button type="button" class="close" aria-label="Close" (click)="closePerfectModal()"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы подтверждаете платёж в размере $<span>{{perfectPayment}}</span>?</p>
+            </div>
+
+            <div class="modal-footer">
+
+                <form ngNoForm action="https://perfectmoney.is/api/step1.asp" method="POST"
+                    class="d-flex justify-content-left align-items-end line-form">
+
+                    <input type="hidden" name="PAYEE_ACCOUNT" value="U4138723">
+                    <input type="hidden" name="PAYEE_NAME" value="Happy Ticket">
+                    <input type="hidden" name="PAYMENT_ID" value="{{perfectID}}">
+                    <input type="hidden" name="PAYMENT_AMOUNT" min="1" value="{{perfectPayment}}">
+                    <input type="hidden" name="PAYMENT_UNITS" value="USD">
+                    <input type="hidden" name="STATUS_URL" value="">
+                    <input type="hidden" name="PAYMENT_URL" value="http://crm.happyticket.net/perfect/payment">
+                    <input type="hidden" name="PAYMENT_URL_METHOD" value="POST">
+                    <input type="hidden" name="NOPAYMENT_URL" value="http://happyticket.net/account">
+                    <input type="hidden" name="NOPAYMENT_URL_METHOD" value="GET">
+                    <input type="hidden" name="SUGGESTED_MEMO" value="{{login}}">
+                    <div class="form-group"><input type="submit" class="btn btn-submit" name="PAYMENT_METHOD"
+                            value="Пополнить"></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':payeerDisplay}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Подтверждение операции</h5>
+                <button type="button" class="close" aria-label="Close" (click)="closePayeerModal()"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы подтверждаете платёж в размере $<span>{{payeerPayment}}</span>?</p>
+            </div>
+
+            <div class="modal-footer">
+
+                <form ngNoForm method="post" action="https://payeer.com/merchant/">
+                    <input type="hidden" name="m_shop" value="858360702">
+                    <input type="hidden" name="m_orderid" value="{{payeerID}}">
+                    <input type="hidden" name="m_amount" value="{{payeerPayment}}">
+                    <input type="hidden" name="m_curr" value="USD">
+                    <input type="hidden" name="m_desc" value="{{baseLogin}}">
+                    <input type="hidden" name="m_sign" value="{{payeerKey}}">
+                    <input type="submit" name="m_process" class="btn btn-submit" value="Подтверждаю">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container-fluid p-3">
+    <div class="d-flex">
+        <input id="81613045-4bb7-4576-9752-12dc08689b7d" type="text" class="form-control form-control-sm"
+            placeholder="Поиск по логину" (keyup)="eventFilter($event)">
+        <input id="9941fd7b-8272-4913-9731-8d5f90368791" type="email" class="form-control form-control-sm"
+            placeholder="Поиск по e-mail" (keyup)="eventFilter($event)">
+            <button (click)="clear()">Сброс</button>
+    </div>
+    <div class="table-responsive">
+        <table id="testtable" class="table admin-users-table">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th scope="col" *ngFor="let index of getKeys(columns)"
+                        [style.display]="isVisibleHeader(columns[index]['perm']) ? 'visible' : 'none'">
+                        {{columns[index]['title']}}</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let matrix of matrixes;let i = index">
+                    <td>
+                        <div class="editable-row-operations">
+                            <ng-container *ngIf="matrix[0] != editKey">
+                                <a (click)="startEdit(matrix[0])">Edit</a>
+                            </ng-container>
+                            <ng-container *ngIf="matrix[0] == editKey">
+                                <a (click)="saveEdit(i)">Save</a>
+                            </ng-container>
+                        </div>
+                    </td>
+                    <td *ngFor="let element of getKeys(matrix)" style="width: 100px;"
+                        [style.display]="isVisibleData(element) ? 'visible' : 'none'">
+                        <ng-container *ngIf="matrix[0] != editKey">
+                            <span>{{matrix[element] | wripetext:context:100}}</span>
+                        </ng-container>
+                        <ng-container *ngIf="matrix[0] == editKey">
+                            <input class="form-control" style="width: 100%;" [(ngModel)]="matrix[element]">
+                        </ng-container>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

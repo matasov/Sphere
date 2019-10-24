@@ -1,0 +1,43 @@
+<app-secondary-header></app-secondary-header>
+<section id="registration">
+	<div class="container">
+		<form [formGroup]="registerForm" class="reg-form" (ngSubmit)="onRegisterClick(captchaRef)">
+			<h3 class="section-title text-center">Регистрация</h3>
+			<div class="form-group">
+				<h4 class="sponsor-login text-center">Ваш спонсор: <strong>{{sponsorGet}}</strong></h4>
+			</div>
+			<div class="form-group" hidden>
+				<label for="sponsorGet">Спонсор</label>
+				<input type="text" formControlName="sponsorGet" class="form-control"
+					[ngClass]="{ 'is-invalid': submitted && f.sponsorGet.errors }" />
+			</div>
+			<div class="form-group">
+				<label for="login">Логин</label>
+				<input type="text" formControlName="login" class="form-control"
+					[ngClass]="{ 'is-invalid': submitted && f.login.errors }" />
+			</div>
+			<div class="form-group">
+				<label for="password">Пароль</label>
+				<input type="password" formControlName="password" class="form-control"
+					[ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+			</div>
+			<div class="form-group">
+				<label for="repeatPassword">Повторите пароль</label>
+				<input type="password" formControlName="repeatPassword" class="form-control"
+					[ngClass]="{ 'is-invalid': submitted && f.repeatPassword.errors }" />
+			</div>
+
+			<div class="form-group">
+				<label for="email">Почта</label>
+				<input type="email" formControlName="email" class="form-control"
+					[ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+			</div>
+
+			<re-captcha #captchaRef="reCaptcha" (resolved)="resolved($event)" size="invisible"></re-captcha>
+			<button class="btn btn-primary">Зарегистрироваться</button>
+		</form>
+
+	</div>
+</section>
+<app-footer></app-footer>

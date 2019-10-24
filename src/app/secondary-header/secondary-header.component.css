@@ -1,0 +1,5 @@
+@import './../../assets/media/css/style.css';
+
+.navbar a {
+    color: rgba(0,0,0,.9);
+}

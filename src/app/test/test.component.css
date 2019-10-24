@@ -1,0 +1,8 @@
+@import './../../assets/media/css/bootadmin.css';
+
+table {margin: 1rem;}
+.table thead th,
+.table tbody td {
+	padding: .2rem;
+	font-size: 0.8rem;
+}

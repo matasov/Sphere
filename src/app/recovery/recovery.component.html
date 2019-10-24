@@ -1,0 +1,20 @@
+<app-secondary-header></app-secondary-header>
+<section id="registration">
+	<div class="container">
+		<form [formGroup]="recoveryForm" class="reg-form" (ngSubmit)="onRecoveryClick(captchaRef)">
+			<h3 class="section-title text-center">Восстановление доступа</h3>
+			<div class="form-group">
+				<input formControlName="login" placeholder="Логин" type="text" autocomplete="off" class="form-control"
+					required />
+				<div id="loginwordstatus" class="empty-form">Обязательное поле</div>
+			</div>
+			
+			
+			<re-captcha #captchaRef="reCaptcha" (resolved)="resolved($event)" size="invisible"></re-captcha>
+			<button class="btn btn-primary">Отправить новый пароль</button>
+			<!--button class="btn btn-primary" name="re_pass" id="re_pass" (click)="onLoginClick(captchaRef)">Отправить новый пароль</button-->
+		</form>
+
+	</div>
+</section>
+<app-footer></app-footer>

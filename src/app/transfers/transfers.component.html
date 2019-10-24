@@ -1,0 +1,45 @@
+<app-dash-header></app-dash-header>
+<div class="d-flex align-items-stretch">
+    <app-dash-sidebar></app-dash-sidebar>
+    <div class="content p-4">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="page-title">Внутренний перевод</h3>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="transferForm" (ngSubmit)="onTransfer()" autocomplete="off" class="">
+                            <div class="form-group">
+                                <label>Финансовый пароль</label>
+                                <input type="password" class="form-control" formControlName="finPass"
+                                    placeholder="Финансовый пароль" autocomplete="off" value="">
+                            </div>
+                            <div class="form-group">
+                                <label>Логин получателя</label>
+                                <input type="text" formControlName="userLogin" class="form-control"
+                                    placeholder="Логин получателя" autocomplete="off" value="">
+                            </div>
+                            <div class="form-group">
+                                <label>Сумма</label>
+                                <input type="text" formControlName="amount" class="form-control" placeholder="Сумма"
+                                    autocomplete="off" value="">
+                            </div>
+                            <div class="form-group"><button class="btn btn-submit">Перевод</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="page-title">Доступный баланс</h3>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="text-center">Баланс: <b>${{balance}}</b></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container-fluid p-3">
+
+    <button (click)="pushQueue()" class="btn-btn-submit" >Push me!!</button>
+    <div class="d-flex justify-content-between">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Уровень</th>
+                    <th scope="col">Первый</th>
+                    <th scope="col">Второй</th>
+                    <th scope="col">Третий</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let matrix of matrixes"> 
+                    <td>{{matrix[3] | json | date:'medium'}}</td>
+                    <td>{{matrix[5] | json}}</td>
+                    <td>{{matrix[6] | json}}</td>
+                    <td>{{matrix[7] | json}}</td>
+                    <td>{{matrix[8] | json}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Логин</th>
+                    <th scope="col">Разница</th>
+                    <th scope="col">Остаток</th>
+                    <th scope="col">Примечание</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let statistic of statistics"> 
+                    <td>{{statistic[3] | json | date:'medium'}}</td>
+                    <td>{{statistic["login"]}}</td>
+                    <td>{{statistic["balance"]}}</td>
+                    <td>{{statistic[8]}}</td>                    
+                    <td>{{statistic[9] | json}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

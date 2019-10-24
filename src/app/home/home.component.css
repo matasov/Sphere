@@ -1,0 +1,15 @@
+@import './../../assets/media/css/style.css';
+
+.slick-arrow {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 60px;
+    font-size: 3rem;
+    top: 0;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,.4);
+}
+
+button.slick-next.slick-arrow {right: 0}
